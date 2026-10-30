@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10121c">
+  <title>HabitVerse — Your Daily Growth</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#">
+  <svg class="brand-mark" viewBox="0 0 64 64" aria-label="HabitVerse logo">
+    <defs>
+      <linearGradient id="hvGradient" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0%" stop-color="#9872ff"/>
+        <stop offset="100%" stop-color="#43d8df"/>
+      </linearGradient>
+    </defs>
+    <path d="M13 12 Q13 7 19 7 H25 V43 Q25 49 19 49 H13 Z" fill="url(#hvGradient)"/>
+    <path d="M36 7 H43 Q49 7 49 13 V52 H36 Z" fill="url(#hvGradient)"/>
+    <path d="M8 40 Q28 22 54 19 Q43 34 17 43" fill="none" stroke="url(#hvGradient)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M53 5 L55 10 L60 12 L55 14 L53 19 L51 14 L46 12 L51 10 Z" fill="#55d8df"/>
+  </svg>
+  <span>Habit<span>Verse</span></span>
+</a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="nav">
+        <a class="nav-link active" href="#dashboard"><span>▦</span> Dashboard</a>
+        <a class="nav-link" href="#habits"><span>◷</span> My Habits</a>
+        <a class="nav-link" href="#insights"><span>▥</span> Insights</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-card">
+          <div class="mini-icon">✧</div>
+          <strong>Small steps.</strong>
+          <p>Big changes begin with what you do today.</p>
+        </div>
+        <div class="profile"><div class="avatar">Y</div><div><strong>Your space</strong><small>Personal workspace</small></div></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar">
+        <div><div class="eyebrow" id="today-label">YOUR DAILY SPACE</div><h1>Good day. <span>Keep growing.</span></h1></div>
+        <div class="top-actions"><span class="date-pill" id="date-label"></span><button class="primary-btn" id="add-habit-top">＋ Add habit</button></div>
+      </header>
+
+      <section class="welcome-banner">
+        <div class="banner-copy"><span class="banner-tag">A LITTLE BETTER, EVERY DAY</span><h2>Build a life you<br>don't need a break from.</h2><p>Show up for your habits. Your future self will thank you.</p></div>
+        <div class="banner-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="orbit">✦</div><div class="banner-spark">✧</div></div>
+      </section>
+
+      <section class="stats-grid" aria-label="Your statistics">
+        <article class="stat-card"><div class="stat-top"><span>Total habits</span><span class="stat-icon purple">✦</span></div><strong id="total-count">0</strong><small>Habits you're building</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Completed today</span><span class="stat-icon teal">✓</span></div><strong id="completed-count">0</strong><small id="completion-caption">Your daily progress</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Today's progress</span><span class="stat-icon blue">◔</span></div><strong id="progress-percent">0%</strong><div class="progress-track"><div id="progress-bar"></div></div></article>
+        <article class="stat-card"><div class="stat-top"><span>Best streak</span><span class="stat-icon orange">♨</span></div><strong id="best-streak">0 <em>days</em></strong><small>Keep your momentum going</small></article>
+      </section>
+
+      <section class="content-grid">
+        <div class="panel habits-panel" id="habits">
+          <div class="panel-heading"><div><div class="eyebrow">YOUR ROUTINE</div><h2>Today's habits</h2></div><span class="count-pill" id="habit-count-pill">0 habits</span></div>
+          <div id="habit-list" class="habit-list"></div>
+          <div class="empty-state" id="empty-state"><div class="empty-icon">✧</div><h3>Your journey starts here</h3><p>Add your first habit and make today count.</p><button class="primary-btn" id="empty-add">＋ Create a habit</button></div>
+        </div>
+
+        <div class="right-column">
+          <section class="panel focus-panel"><div class="eyebrow">DAILY REMINDER</div><div class="focus-icon">✧</div><h2>Consistency<br>beats intensity.</h2><p>You don't have to do everything. Just keep showing up for the things that matter.</p><div class="focus-foot"><span>YOUR DAILY NOTE</span><span>01 / 01</span></div></section>
+          <section class="panel week-panel" id="insights"><div class="panel-heading"><div><div class="eyebrow">YOUR ACTIVITY</div><h2>This week</h2></div><span class="week-badge">7 DAYS</span></div><div class="week-bars" id="week-bars"></div><p class="week-note">Your completed habits, day by day.</p></section>
+        </div>
+      </section>
+      <footer>Made for progress, not perfection. <span>HABITVERSE © 2026</span></footer>
+    </main>
+  </div>
+
+  <dialog id="habit-dialog">
+    <form method="dialog" id="habit-form">
+      <div class="dialog-head"><div><div class="eyebrow">MAKE IT A ROUTINE</div><h2 id="dialog-title">Create a habit</h2></div><button type="button" class="close-btn" id="close-dialog" aria-label="Close">×</button></div>
+      <label for="habit-name">Habit name</label><input id="habit-name" maxlength="40" placeholder="e.g. Read for 20 minutes" required>
+      <label for="habit-category">Category</label><select id="habit-category"><option>Mind</option><option>Health</option><option>Learning</option><option>Productivity</option><option>Personal</option></select>
+      <label for="habit-icon">Choose an icon</label><select id="habit-icon"><option value="✦">✦ Spark</option><option value="📚">📚 Books</option><option value="💧">💧 Water</option><option value="🏃">🏃 Movement</option><option value="🧘">🧘 Mindfulness</option><option value="✍️">✍️ Writing</option><option value="🎯">🎯 Focus</option></select>
+      <div class="dialog-actions"><button type="button" class="secondary-btn" id="cancel-dialog">Cancel</button><button type="submit" class="primary-btn">Save habit</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
